@@ -2,7 +2,7 @@
   <v-app>
     <!-- App Bar -->
     <v-app-bar app>
-      <v-toolbar-title>Daisuke Hara</v-toolbar-title>
+      <v-toolbar-title>Daisuke Hara   ~{{ currentSection }}~</v-toolbar-title>
       <v-spacer></v-spacer>
       <!-- Navigation Links -->
       <v-btn text @click="scrollTo('top')">Top</v-btn>
@@ -14,24 +14,21 @@
 
     <!-- Sections -->
     <v-main>
-      <section id="top" style="height: 100vh; background: #ffffff;">
-        <h1>Top</h1>
-        <p>Your top page here...</p>
+      <section id="top" ref="top" style="height: 100vh; background: #bdbdbd;">
+        <MainTop></MainTop>
       </section>
-
-      <section id="about" style="height: 100vh; background: #f5f5f5;">
-        <h1>About</h1>
-        <p>Your information here...</p>
+      <section id="about" ref="about" style="background: #ffffff;">
+        <About></About>
       </section>
-      <section id="skills" style="height: 100vh; background: #e3e3e3;">
+      <section id="skills" ref="skills" style="height: 100vh; background: #bdbdbd;">
         <h1>Skills</h1>
         <p>Your skills here...</p>
       </section>
-      <section id="certifications" style="height: 100vh; background: #d0d0d0;">
+      <section id="certifications" ref="certifications" style="height: 100vh; background: #ffffff;">
         <h1>Certifications</h1>
         <p>Your certifications here...</p>
       </section>
-      <section id="contact" style="height: 100vh; background: #bdbdbd;">
+      <section id="contact" ref="contact" style="height: 100vh; background: #bdbdbd;">
         <h1>Contact</h1>
         <p>Your contact details here...</p>
       </section>
@@ -40,14 +37,53 @@
 </template>
 
 <script>
+import MainTop from './components/MainTop.vue';
+import About from './components/About.vue';
+
 export default {
+  components: { MainTop, About },
+  data() {
+    return {
+      currentSection: "Daisuke Hara", // デフォルトのタイトル
+    };
+  },
+  mounted() {
+    const options = {
+      root: null, // ビューポート全体を基準
+      threshold: 0.5, // セクションが50%以上見えたら発火
+    };
+
+    this.observer = new IntersectionObserver(this.handleIntersect, options);
+
+    // 各セクションを監視
+    ["top", "about", "skills", "certifications", "contact"].forEach((sectionId) => {
+      const section = this.$refs[sectionId];
+      if (section) {
+        this.observer.observe(section);
+      }
+    });
+  },
   methods: {
+    handleIntersect(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          this.currentSection = entry.target.id.charAt(0).toUpperCase() + entry.target.id.slice(1);
+        }
+      });
+    },
     scrollTo(sectionId) {
       const element = document.getElementById(sectionId);
+      const appBarHeight = document.querySelector(".v-app-bar").clientHeight; // v-app-barの縦幅
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const scrollY = element.offsetTop - appBarHeight; // スクロール位置を調整
+        window.scrollTo({ top: scrollY, behavior: "smooth" });
       }
     },
+  },
+  beforeDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   },
 };
 </script>
