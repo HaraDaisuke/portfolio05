@@ -20,9 +20,8 @@
       <section id="about" ref="about" style="background: #ffffff;">
         <About></About>
       </section>
-      <section id="skills" ref="skills" style="height: 100vh; background: #bdbdbd;">
-        <h1>Skills</h1>
-        <p>Your skills here...</p>
+      <section id="skills" ref="skills" style="background: #bdbdbd;">
+        <SkillTop></SkillTop>
       </section>
       <section id="certifications" ref="certifications" style="height: 100vh; background: #ffffff;">
         <h1>Certifications</h1>
@@ -39,6 +38,7 @@
 <script>
 import MainTop from './components/MainTop.vue';
 import About from './components/About.vue';
+import SkillTop from './components/SkillTop.vue';
 
 export default {
   components: { MainTop, About },
@@ -91,7 +91,7 @@ export default {
 <style scoped>
 section {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
 }

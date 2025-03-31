@@ -1,7 +1,7 @@
 <template>
   <v-container v-intersect="onIntersect">
     <v-slide-x-transition>
-      <v-card v-show="isVisible">
+      <v-card v-show="isVisible" class="fixed-card">
         <v-card-title class="text-h6 bg-red-lighten-2"><slot name="my-card-title"></slot></v-card-title>
         <v-card-text class="bg-white text--primary pt-3"><p><slot name="my-card-text"></slot></p></v-card-text>
       </v-card>
@@ -24,3 +24,4 @@ const onIntersect = (isIntersecting, entries, observer)  => {
   }
 };
 </script>
+
