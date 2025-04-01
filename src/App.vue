@@ -20,14 +20,15 @@
       <section id="about" ref="about" style="background: #ffffff;">
         <About></About>
       </section>
-      <section id="skills" ref="skills" style="background: #bdbdbd;">
+      <section id="skills" ref="skills" style="background: #ffffff;">
         <SkillTop></SkillTop>
+
       </section>
       <section id="certifications" ref="certifications" style="height: 100vh; background: #ffffff;">
         <h1>Certifications</h1>
         <p>Your certifications here...</p>
       </section>
-      <section id="contact" ref="contact" style="height: 100vh; background: #bdbdbd;">
+      <section id="contact" ref="contact" style="height: 100vh; background: #ffffff;">
         <h1>Contact</h1>
         <p>Your contact details here...</p>
       </section>
@@ -39,9 +40,10 @@
 import MainTop from './components/MainTop.vue';
 import About from './components/About.vue';
 import SkillTop from './components/SkillTop.vue';
+import SkillChart from './components/SkillChart.vue';
 
 export default {
-  components: { MainTop, About },
+  components: { MainTop, About ,SkillTop,SkillChart},
   data() {
     return {
       currentSection: "Daisuke Hara", // デフォルトのタイトル
