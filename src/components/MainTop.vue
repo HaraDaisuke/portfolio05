@@ -39,14 +39,14 @@ const isVisible = ref(false);
 
 const onIntersect = (isIntersecting, entries, observer) => {
   if (isIntersecting) {
-    console.log("表示領域に達した");
+    //console.log("表示領域に達した");
     setTimeout(() => {
-      console.log("表示した");
+      //console.log("表示した");
       isVisible.value = true;
     }, 150);
   } else {
-    console.log("表示領域から離れた");
-    isVisible.value = false;
+    //console.log("表示領域から離れた");
+    //isVisible.value = false;
   }
 };
 </script>
