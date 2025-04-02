@@ -7,7 +7,7 @@
         width="70%"
         style="background-size: cover; color: white;">
         <v-card-title>
-          <v-row class="text-h1 font-weight-bold justify-center">
+          <v-row class="text-h1 justify-center">
             Daisuke Hara
           </v-row>
         </v-card-title>

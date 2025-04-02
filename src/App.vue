@@ -2,7 +2,7 @@
   <v-app>
     <!-- App Bar -->
     <v-app-bar app>
-      <v-toolbar-title>Daisuke Hara   ~{{ currentSection }}~</v-toolbar-title>
+      <v-toolbar-title>Daisuke Hara</v-toolbar-title>
       <v-spacer></v-spacer>
       <!-- Navigation Links -->
       <v-btn text @click="scrollTo('top')">Top</v-btn>
@@ -17,21 +17,101 @@
       <section id="top" ref="top" style="height: 100vh; background: #bdbdbd;">
         <MainTop></MainTop>
       </section>
-      <section id="about" ref="about" style="background: #ffffff;">
-        <About></About>
-      </section>
-      <section id="skills" ref="skills" style="background: #ffffff;">
-        <SkillTop></SkillTop>
+      
+    <v-container fluid class="bg-white pt-10" id="about">
+      <!-- 見出しを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" class="text-center">
+          <v-typography variant="h2" class="text-h2">
+            About
+          </v-typography>
+        </v-col>
+      </v-row>
 
-      </section>
-      <section id="certifications" ref="certifications" style="height: 100vh; background: #ffffff;">
-        <h1>Certifications</h1>
-        <p>Your certifications here...</p>
-      </section>
-      <section id="contact" ref="contact" style="height: 100vh; background: #ffffff;">
-        <h1>Contact</h1>
-        <p>Your contact details here...</p>
-      </section>
+      <!-- Aboutのコンテンツを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" md="8">
+          <section ref="about" class="bg-white">
+            <About></About>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+
+
+
+
+
+    <v-container fluid class="bg-white pt-10" id="skills">
+      <!-- 見出しを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" class="text-center">
+          <v-typography variant="h1" class="text-h2">
+            Skills
+          </v-typography>
+        </v-col>
+      </v-row>
+
+      <!-- Skillsのコンテンツを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" md="8">
+          <section ref="skills" class="bg-white">
+            <SkillTop></SkillTop>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+
+
+
+
+
+    <v-container fluid class="bg-white pt-10" id="certifications">
+      <!-- 見出しを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" class="text-center">
+          <v-typography variant="h1" class="text-h2">
+            Certifications
+          </v-typography>
+        </v-col>
+      </v-row>
+
+      <!-- Skillsのコンテンツを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" md="8">
+          <section ref="certifications" class="bg-white">
+            <Certifications></Certifications>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+
+
+
+
+
+
+    <v-container fluid class="bg-white pt-10" id="contact">
+      <!-- 見出しを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" class="text-center">
+          <v-typography variant="h1" class="text-h2">
+            Contact
+          </v-typography>
+        </v-col>
+      </v-row>
+
+      <!-- Skillsのコンテンツを中央に配置 -->
+      <v-row justify="center">
+        <v-col cols="12" md="8">
+          <section ref="contact" class="bg-white">
+            <Contact></Contact>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+
+
     </v-main>
   </v-app>
 </template>
@@ -41,9 +121,11 @@ import MainTop from './components/MainTop.vue';
 import About from './components/About.vue';
 import SkillTop from './components/SkillTop.vue';
 import SkillChart from './components/SkillChart.vue';
+import Certifications from './components/Certifications.vue';
+import Contact from './components/Contact.vue'
 
 export default {
-  components: { MainTop, About ,SkillTop,SkillChart},
+  components: { MainTop, About ,SkillTop,SkillChart,Certifications,Contact},
   data() {
     return {
       currentSection: "Daisuke Hara", // デフォルトのタイトル
